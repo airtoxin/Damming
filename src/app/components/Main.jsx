@@ -10,7 +10,7 @@ var Main = React.createClass( {
 	displayName: 'Main',
 	render: function() {
 		return (
-			<div className="app-main">
+			<div>
 				<Header />
 				<mui.RaisedButton label="Super Secret Password" primary={true} />
 				<Query />
