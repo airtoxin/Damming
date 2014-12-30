@@ -23,7 +23,7 @@ var Graph = React.createClass( {
 	},
 	_onSlectPanelType: function ( panelType ) {
 		this.setState( {
-			panels: _.union( this.state.panels, [ panelType ] )
+			panels: this.state.panels.concat( panelType )
 		} );
 	}
 } );
