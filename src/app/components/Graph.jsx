@@ -1,13 +1,30 @@
+var _ = require( 'lodash' );
 var React = require( 'react' );
+var mui = require( 'material-ui' );
+
+var AddButton = require( './Graph/AddButton.jsx' );
+var Panels    = require( './Graph/Panels.jsx' );
 
 var Graph = React.createClass( {
 	displayName: 'Graph',
+	getInitialState: function () {
+		return {
+			panels: [ 'line' ]
+		};
+	},
 	render: function() {
 		return (
-			<div>
+			<mui.Paper zDepth={3}>
 				<h1>Graph</h1>
-			</div>
+				<Panels panels={this.state.panels} bqData={this.props.bqData} />
+				<AddButton onSelectPanelType={this._onSlectPanelType} />
+			</mui.Paper>
 		);
+	},
+	_onSlectPanelType: function ( panelType ) {
+		this.setState( {
+			panels: _.union( this.state.panels, [ panelType ] )
+		} );
 	}
 } );
 

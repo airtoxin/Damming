@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "gulp"
-    },
+  },
   "browserify": {
     "transform": [
       [
@@ -32,8 +32,11 @@
     "watchify": "^2.2.1"
   },
   "dependencies": {
+    "lodash": "^2.4.1",
     "material-ui": "^0.4.1",
+    "node-uuid": "^1.4.2",
     "react": "^0.12.2",
+    "react-chartjs": "^0.1.1",
     "react-tap-event-plugin": "^0.1.3"
   }
 }

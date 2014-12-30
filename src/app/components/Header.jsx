@@ -1,13 +1,14 @@
 var React = require( 'react' );
+var mui = require( 'material-ui' );
 
 var Header = React.createClass( {
 	displayName: 'Header',
 	render: function() {
 		return (
-			<div>
+			<mui.Paper zDepth={3}>
 				<h1>material-ui</h1>
 				<h2>example project</h2>
-			</div>
+			</mui.Paper>
 		);
 	}
 } );
