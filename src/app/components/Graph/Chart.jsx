@@ -9,6 +9,7 @@ var charts = {
 			var xname = field.x;
 			var yname = field.y;
 			if ( !xname || !yname ) return;
+			if ( _.indexOf( bqData.colName, xname ) === -1 || _.indexOf( bqData.colName, yname ) === -1 ) return;
 			var xi = _.findIndex( bqData.colName, function ( cname ) {
 				return cname == xname;
 			} );
@@ -44,12 +45,15 @@ var charts = {
 var Chart = React.createClass( {
 	displayName: 'Chart',
 	render: function() {
-		var Chart = charts[ this.props.type ].chart;
+		var Cht = charts[ this.props.type ].chart;
 		var data = charts[ this.props.type ].parse( this.props.bqData, this.props.field )
 		if ( !data ) return false;
 		return (
-			<Chart data={data} height={300} width={800}/>
+			<Cht ref="chart" data={data} height={300} width={800}/>
 		);
+	},
+	shouldComponentUpdate: function ( nextProps ) {
+		return !_.isEqual( this.props, nextProps );
 	}
 } );
 
