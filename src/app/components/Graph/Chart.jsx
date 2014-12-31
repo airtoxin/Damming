@@ -133,8 +133,8 @@ var charts = {
 				} );
 				return (
 					<table className="table table-striped">
-						<tr>{heads}</tr>
-						{bodys}
+						<thead><tr>{heads}</tr></thead>
+						<tbody>{bodys}</tbody>
 					</table>
 				);
 			}
