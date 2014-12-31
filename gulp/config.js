@@ -43,5 +43,10 @@ module.exports = {
       dest: dest,
       outputName: 'app.js'
     }]
+  },
+  concat: {
+    src: src + '/vendors/**/*.js',
+    dest: dest,
+    outputName: 'vendors.js'
   }
 };
