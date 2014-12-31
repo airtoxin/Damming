@@ -1,4 +1,5 @@
 var _ = require( 'lodash' );
+var color = require( 'randomcolor' );
 var React = require( 'react' );
 require( 'react-chartjs/vars' ).React = React;
 
@@ -11,10 +12,10 @@ var charts = {
 			if ( !xname || !yname ) return;
 			if ( _.indexOf( bqData.colName, xname ) === -1 || _.indexOf( bqData.colName, yname ) === -1 ) return;
 			var xi = _.findIndex( bqData.colName, function ( cname ) {
-				return cname == xname;
+				return cname === xname;
 			} );
 			var yi = _.findIndex( bqData.colName, function ( cname ) {
-				return cname == yname;
+				return cname === yname;
 			} );
 			var xdata = bqData.colData[ xi ];
 			var ydata = bqData.colData[ yi ];
@@ -37,7 +38,26 @@ var charts = {
 	pie: {
 		chart: require( 'react-chartjs/pie' ),
 		parse: function ( bqData, field ) {
-			return bqData;
+			var nname = field.name;
+			var vname = field.value;
+			if ( !nname || !vname ) return;
+			if ( _.indexOf( bqData.colName, nname ) === -1 || _.indexOf( bqData.colName, vname ) === -1 ) return;
+			var ni = _.findIndex( bqData.colName, function ( cname ) {
+				return cname === nname;
+			} );
+			var vi = _.findIndex( bqData.colName, function ( cname ) {
+				return cname === vname;
+			} );
+			var ndata = bqData.colData[ ni ];
+			var vdata = bqData.colData[ vi ];
+			var data = _.map( _.zip( [ ndata, vdata ] ), function ( nvArray ) {
+				return {
+					label: nvArray[0],
+					value: nvArray[1],
+					color: color( { luminosity: 'light' } )
+				};
+			} );
+			return data;
 		}
 	}
 };

@@ -37,7 +37,9 @@ var Panel = React.createClass( {
 				return (
 					<section>
 						<p>Field Name</p>
-						<mui.Input type="text" name="Field" placeholder="score" multiline={false} required={true}/>
+						<mui.Input ref="piename"  type="text" name="Name"  placeholder="Name"  multiline={false} required={true}/>
+						<mui.Input ref="pievalue" type="text" name="Value" placeholder="Value" multiline={false} required={true}/>
+						<mui.RaisedButton label="Set Field" secondary={true} onClick={this._onClickOkPie}/>
 					</section>
 				);
 		}
@@ -47,6 +49,14 @@ var Panel = React.createClass( {
 			field: {
 				x: this.refs.linex.getValue(),
 				y: this.refs.liney.getValue()
+			}
+		} );
+	},
+	_onClickOkPie: function () {
+		this.setState( {
+			field: {
+				name:  this.refs.piename.getValue(),
+				value: this.refs.pievalue.getValue()
 			}
 		} );
 	}
