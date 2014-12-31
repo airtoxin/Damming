@@ -1,5 +1,6 @@
 var _ = require( 'lodash' );
 var color = require( 'randomcolor' );
+var uuid = require( 'node-uuid' );
 var React = require( 'react' );
 require( 'react-chartjs/vars' ).React = React;
 
@@ -113,6 +114,33 @@ var charts = {
 				};
 			} );
 			return data;
+		}
+	},
+	table: {
+		chart: React.createClass( {
+			displayName: 'Table',
+			render: function () {
+				var heads = this.props.data.colName.map( function ( name ) {
+					return ( <th key={uuid.v4()}>{name}</th> );
+				} );
+				var bodys = _.zip.apply( this, this.props.data.colData ).map( function ( data ) {
+					var row = data.map( function ( d ) {
+						return ( <td key={uuid.v4()}>{d}</td> );
+					} );
+					return (
+						<tr key={uuid.v4()}>{row}</tr>
+					);
+				} );
+				return (
+					<table className="table table-striped">
+						<tr>{heads}</tr>
+						{bodys}
+					</table>
+				);
+			}
+		} ),
+		parse: function ( bqData ) {
+			return bqData;
 		}
 	}
 };

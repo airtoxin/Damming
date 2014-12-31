@@ -9,7 +9,7 @@ var Graph = React.createClass( {
 	displayName: 'Graph',
 	getInitialState: function () {
 		return {
-			panels: [ 'bar' ]
+			panels: [ 'table' ]
 		};
 	},
 	render: function() {
