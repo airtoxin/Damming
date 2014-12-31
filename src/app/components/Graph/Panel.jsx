@@ -25,6 +25,7 @@ var Panel = React.createClass( {
 	_chartOptions: function () {
 		switch ( this.props.type ) {
 			case 'line':
+			case 'bar':
 				return (
 					<section>
 						<p>Field Name</p>

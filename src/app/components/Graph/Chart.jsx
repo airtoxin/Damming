@@ -35,6 +35,36 @@ var charts = {
 			}
 		}
 	},
+	bar: {
+		chart: require( 'react-chartjs/bar' ),
+		parse: function ( bqData, field ) {
+			var xname = field.x;
+			var yname = field.y;
+			if ( !xname || !yname ) return;
+			if ( _.indexOf( bqData.colName, xname ) === -1 || _.indexOf( bqData.colName, yname ) === -1 ) return;
+			var xi = _.findIndex( bqData.colName, function ( cname ) {
+				return cname === xname;
+			} );
+			var yi = _.findIndex( bqData.colName, function ( cname ) {
+				return cname === yname;
+			} );
+			var xdata = bqData.colData[ xi ];
+			var ydata = bqData.colData[ yi ];
+			return {
+				labels: xdata,
+				datasets: [
+					{
+						fillColor: "rgba(151,187,205,0.5)",
+						strokeColor: "rgba(151,187,205,0.8)",
+						highlightFill: "rgba(151,187,205,0.75)",
+						highlightStroke: "rgba(151,187,205,1)",
+						pointHighlightStroke: "rgba(220,220,220,1)",
+						data: ydata
+					}
+				]
+			}
+		}
+	},
 	pie: {
 		chart: require( 'react-chartjs/pie' ),
 		parse: function ( bqData, field ) {
