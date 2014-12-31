@@ -1,16 +1,8 @@
-# [Material-UI](http://callemall.github.io/material-ui/)
+# Damming
 
-This is an example project that uses [Material-UI](http://callemall.github.io/material-ui/).
+BigQuery dashboard
 
-## Installation
-After cloning the repository, install dependencies:
-```
-cd <project folder>/material-ui/example
-npm install
-npm install -g gulp
-```
+##Developing
 
-Now you can run your local server:
-```
-gulp
-```
+1. `npm i`
+2. `npm run`
