@@ -59,6 +59,31 @@ var charts = {
 			} );
 			return data;
 		}
+	},
+	doughnut: {
+		chart: require( 'react-chartjs/doughnut' ),
+		parse: function ( bqData, field ) {
+			var nname = field.name;
+			var vname = field.value;
+			if ( !nname || !vname ) return;
+			if ( _.indexOf( bqData.colName, nname ) === -1 || _.indexOf( bqData.colName, vname ) === -1 ) return;
+			var ni = _.findIndex( bqData.colName, function ( cname ) {
+				return cname === nname;
+			} );
+			var vi = _.findIndex( bqData.colName, function ( cname ) {
+				return cname === vname;
+			} );
+			var ndata = bqData.colData[ ni ];
+			var vdata = bqData.colData[ vi ];
+			var data = _.map( _.zip( [ ndata, vdata ] ), function ( nvArray ) {
+				return {
+					label: nvArray[0],
+					value: nvArray[1],
+					color: color( { luminosity: 'light' } )
+				};
+			} );
+			return data;
+		}
 	}
 };
 

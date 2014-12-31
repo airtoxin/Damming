@@ -34,12 +34,13 @@ var Panel = React.createClass( {
 					</section>
 				);
 			case 'pie':
+			case 'doughnut':
 				return (
 					<section>
 						<p>Field Name</p>
-						<mui.Input ref="piename"  type="text" name="Name"  placeholder="Name"  multiline={false} required={true}/>
-						<mui.Input ref="pievalue" type="text" name="Value" placeholder="Value" multiline={false} required={true}/>
-						<mui.RaisedButton label="Set Field" secondary={true} onClick={this._onClickOkPie}/>
+						<mui.Input ref="circlename"  type="text" name="Name"  placeholder="Name"  multiline={false} required={true}/>
+						<mui.Input ref="circlevalue" type="text" name="Value" placeholder="Value" multiline={false} required={true}/>
+						<mui.RaisedButton label="Set Field" secondary={true} onClick={this._onClickOkCircle}/>
 					</section>
 				);
 		}
@@ -52,11 +53,11 @@ var Panel = React.createClass( {
 			}
 		} );
 	},
-	_onClickOkPie: function () {
+	_onClickOkCircle: function () {
 		this.setState( {
 			field: {
-				name:  this.refs.piename.getValue(),
-				value: this.refs.pievalue.getValue()
+				name:  this.refs.circlename.getValue(),
+				value: this.refs.circlevalue.getValue()
 			}
 		} );
 	}
