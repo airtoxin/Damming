@@ -7,6 +7,9 @@ var Panels    = require( './Graph/Panels.jsx' );
 
 var Graph = React.createClass( {
 	displayName: 'Graph',
+	propTypes: {
+		bqData: React.PropTypes.object
+	},
 	getInitialState: function () {
 		return {
 			panels: [ 'table' ]

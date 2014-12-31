@@ -5,6 +5,10 @@ var Panel = require( './Panel.jsx' );
 
 var Panels = React.createClass( {
 	displayName: 'Panels',
+	propTypes: {
+		panels: React.PropTypes.arrayOf( React.PropTypes.string ),
+		bqData: React.PropTypes.object
+	},
 	render: function() {
         var self = this;
 		var panels = this.props.panels.map( function ( panelType ) {

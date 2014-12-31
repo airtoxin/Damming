@@ -119,6 +119,9 @@ var charts = {
 	table: {
 		chart: React.createClass( {
 			displayName: 'Table',
+			propTypes: {
+				data: React.PropTypes.object
+			},
 			render: function () {
 				var heads = this.props.data.colName.map( function ( name ) {
 					return ( <th key={uuid.v4()}>{name}</th> );
@@ -147,6 +150,11 @@ var charts = {
 
 var Chart = React.createClass( {
 	displayName: 'Chart',
+	propTypes: {
+		type: React.PropTypes.string,
+		bqData: React.PropTypes.object,
+		field: React.PropTypes.object
+	},
 	render: function() {
 		var Cht = charts[ this.props.type ].chart;
 		var data = charts[ this.props.type ].parse( this.props.bqData, this.props.field )

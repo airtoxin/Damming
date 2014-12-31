@@ -6,6 +6,10 @@ var Chart = require( './Chart.jsx' );
 
 var Panel = React.createClass( {
 	displayName: 'Panel',
+	propTypes: {
+		type: React.PropTypes.string,
+		bqData: React.PropTypes.object
+	},
 	getInitialState: function () {
 		return {
 			field: {}

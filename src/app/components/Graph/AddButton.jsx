@@ -5,6 +5,9 @@ var DialogContent = require( './DialogContent.jsx' );
 
 var AddButton = React.createClass( {
 	displayName: 'AddButton',
+	propTypes: {
+		onSelectPanelType: React.PropTypes.func
+	},
 	render: function() {
 		return (
 			<div>
