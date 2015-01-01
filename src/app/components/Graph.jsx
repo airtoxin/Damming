@@ -1,4 +1,5 @@
 var _ = require( 'lodash' );
+var uuid = require( 'node-uuid' );
 var React = require( 'react' );
 var mui = require( 'material-ui' );
 
@@ -12,7 +13,7 @@ var Graph = React.createClass( {
 	},
 	getInitialState: function () {
 		return {
-			panels: [ 'table' ]
+			panels: [ { panelType: 'table', id: uuid.v4() } ]
 		};
 	},
 	render: function() {
@@ -26,7 +27,10 @@ var Graph = React.createClass( {
 	},
 	_onSlectPanelType: function ( panelType ) {
 		this.setState( {
-			panels: this.state.panels.concat( panelType )
+			panels: this.state.panels.concat( [ {
+				panelType: panelType,
+				id: uuid.v4()
+			} ] )
 		} );
 	}
 } );
