@@ -3,6 +3,9 @@ var mui = require( 'material-ui' );
 
 var Query = React.createClass( {
 	displayName: 'Query',
+	propTypes: {
+		onClickSendQuery: React.PropTypes.func
+	},
 	render: function() {
 		return (
 			<mui.Paper zDepth={3}>
@@ -13,7 +16,7 @@ var Query = React.createClass( {
 					description="input your Query of BigQuery"
 					multiline={true}
 				/>
-				<mui.RaisedButton label="Send Query" secondary={true} />
+				<mui.RaisedButton label="Send Query" secondary={true} onClick={this.props.onClickSendQuery}/>
 			</mui.Paper>
 		);
 	}

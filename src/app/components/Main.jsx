@@ -47,16 +47,33 @@ var bqResponse = {
 
 var Main = React.createClass( {
 	displayName: 'Main',
+	getInitialState: function () {
+		return { bqResponse: {
+			schema: {
+				fields: []
+			},
+			rows: []
+		} };
+	},
 	render: function() {
-		var bqData = this._parseBqResponse( bqResponse );
+		var bqData = this._parseBqResponse( this.state.bqResponse );
+		console.log("@bqData:", bqData);
 		return (
 			<div>
 				<Header />
-				<Query />
-				<Graph bqData={bqData} />
+				<Query onClickSendQuery={this._onClickSendQuery}/>
+				<Graph bqData={this.state.bqData} />
 				<Footer />
 			</div>
 		);
+	},
+	_onClickSendQuery: function () {
+		var self = this;
+		setTimeout( function () {
+			self.setState( {
+				bqData: self._parseBqResponse( bqResponse )
+			} );
+		}, 2000 );
 	},
 	_parseBqResponse: function ( bqResponse ) {
 		var columnName = _.map( bqResponse.schema.fields, function ( field ) {
