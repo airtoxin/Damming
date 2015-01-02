@@ -48,16 +48,18 @@ var bqResponse = {
 var Main = React.createClass( {
 	displayName: 'Main',
 	getInitialState: function () {
-		return { bqResponse: {
-			schema: {
-				fields: []
+		return {
+			bqResponse: {
+				schema: {
+					fields: []
+				},
+				rows: []
 			},
 			rows: []
-		} };
+		}
 	},
 	render: function() {
 		var bqData = this._parseBqResponse( this.state.bqResponse );
-		console.log("@bqData:", bqData);
 		return (
 			<div>
 				<Header />
@@ -69,9 +71,13 @@ var Main = React.createClass( {
 	},
 	_onClickSendQuery: function () {
 		var self = this;
+		this.setState( {
+			isLoading: true
+		} );
 		setTimeout( function () {
 			self.setState( {
-				bqData: self._parseBqResponse( bqResponse )
+				bqData: self._parseBqResponse( bqResponse ),
+				isLoading: false
 			} );
 		}, 2000 );
 	},
