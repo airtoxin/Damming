@@ -21,4 +21,8 @@ coverage
 .lock-wscript
 
 node_modules
-build
+
+# Compiled sources and binaries
+build/*
+cache/*
+compile/*

@@ -2,7 +2,7 @@
 
 	var React = require( 'react' ),
 		injectTapEventPlugin = require( 'react-tap-event-plugin' ),
-		Main = require( './components/Main.jsx' );
+		Main = require( './main/Main.jsx' );
 
 	//Needed for React Developer Tools
 	window.React = React;
